@@ -42,7 +42,7 @@ RUN apt-get update --fix-missing && apt-get -y upgrade
 # Install dependencies
 RUN apt-get -y \
     install python-pip \
-    python-imaging \
+    python-pil \
     python-setuptools \
     python-mutagen \
     python-pam \
@@ -52,7 +52,7 @@ RUN apt-get -y \
     openssh-client && \
     apt-get -y clean && \
     apt-get -q -y autoremove
-RUN pip install --upgrade futures tornado cssmin slimit psutil
+RUN pip install --upgrade futures tornado==4.2.1 cssmin slimit psutil pyopenssl
 
 # Create the necessary directories, clone the repo, and install everything
 RUN mkdir -p /gateone/logs && \
@@ -78,4 +78,4 @@ RUN rm -f /etc/gateone/ssl/key.pem && \
 
 EXPOSE 8000
 
-CMD ["/usr/local/bin/update_and_run_gateone", "--log_file_prefix=/gateone/logs/gateone.log"]
+CMD ["service gateone start", "--log_file_prefix=/gateone/logs/gateone.log"]
