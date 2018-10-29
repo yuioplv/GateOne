@@ -30,7 +30,7 @@
 #
 ############################################################
 
-FROM ubuntu
+FROM ubuntu:18.04
 MAINTAINER Dan McDougall <daniel.mcdougall@liftoffsoftware.com>
 
 ENV GATEONE_REPO_URL https://github.com/liftoff/GateOne.git
