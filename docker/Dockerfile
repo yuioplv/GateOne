@@ -78,4 +78,4 @@ RUN rm -f /etc/gateone/ssl/key.pem && \
 
 EXPOSE 8000
 
-CMD ["service gateone start", "--log_file_prefix=/gateone/logs/gateone.log"]
+CMD ["/usr/local/bin/gateone", "--log_file_prefix=/gateone/logs/gateone.log"]
